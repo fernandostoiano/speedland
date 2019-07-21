@@ -16,7 +16,7 @@ public class LineDtoConverter implements Function<String, LineDto> {
     @Override
     public LineDto apply(String line) {
 
-        if(isEmpty(line) || line.length() < 102) {
+        if(isEmpty(line) || line.length() < 101) {
             return null;
         }
 
@@ -58,11 +58,12 @@ public class LineDtoConverter implements Function<String, LineDto> {
     }
 
     private String convertPilotName(String line) {
-        String pilot = line.substring(18, 31);
+        String pilot = line.substring(18, 58);
+        int pilotLength = pilot.length();
 
-        String pilotName = pilot.substring(6, 13);
+        String pilotName = pilot.substring(6, pilotLength);
 
-        return pilotName;
+        return pilotName.trim();
     }
 
     private Integer convertLap(String line) {
