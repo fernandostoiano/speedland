@@ -1,5 +1,6 @@
-package com.gympass.speedland.model;
+package com.gympass.speedland.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Pilot {
@@ -13,9 +14,22 @@ public class Pilot {
     private List<Lap> laps;
 
 
+    public Pilot() {
+        this.laps = new ArrayList<>();
+    }
+
+
     public Integer getCode() {
         return code;
     }
+
+    public boolean verifYCode(Integer code) {
+        if(this.code == code) {
+            return true;
+        }
+        return false;
+    }
+
 
     public void setCode(Integer code) {
         this.code = code;
@@ -44,5 +58,7 @@ public class Pilot {
     public void setLaps(List<Lap> laps) {
         this.laps = laps;
     }
+
+    public void addLap(Lap lap) { this.laps.add(lap); }
 
 }

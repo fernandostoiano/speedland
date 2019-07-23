@@ -1,4 +1,4 @@
-package com.gympass.speedland.model;
+package com.gympass.speedland.models;
 
 
 import java.time.LocalTime;

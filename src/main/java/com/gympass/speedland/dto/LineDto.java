@@ -70,4 +70,11 @@ public class LineDto {
         return averageSpeed;
     }
 
+    public boolean isFirsLap() {
+        if(this.lap == 1) {
+            return true;
+        }
+        return false;
+    }
+
 }

@@ -2,6 +2,12 @@ package com.gympass.speedland.services;
 
 import com.gympass.speedland.converter.LineDtoConverter;
 import com.gympass.speedland.dto.LineDto;
+import com.gympass.speedland.factories.GrandPrixStrategyFactory;
+import com.gympass.speedland.models.GrandPrix;
+import com.gympass.speedland.models.Pilot;
+import com.gympass.speedland.strategies.GrandPrixStrategy;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -9,7 +15,11 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
+@Service
 public class LogService {
+
+    @Autowired
+    private GrandPrixStrategyFactory grandPrixStrategyFactory;
 
     public void readLog() throws IOException {
 
@@ -17,12 +27,20 @@ public class LogService {
 
         List<String> lines = Files.readAllLines(path);
 
-        //String line = "23:49:08.277      038 – F.MASSA                           1     1:02.852                        44,275";
+        GrandPrix grandPrix = new GrandPrix();
 
         for(String line : lines) {
             LineDtoConverter lineDtoConverter = new LineDtoConverter();
             LineDto lineDto = lineDtoConverter.apply(line);
-            System.out.println(lineDto);
+
+            GrandPrixStrategy grandPrixStrategy = grandPrixStrategyFactory.getStrategy(lineDto);
+            grandPrixStrategy.registerLap(grandPrix, lineDto);
+        }
+
+        for(Pilot pilot : grandPrix.getPilots()) {
+
+            System.out.println("Code: " + pilot.getCode() + " Name: " + pilot.getName() + " Laps: " + pilot.getLaps().size() + " Position: " + pilot.getPosition());
+
         }
     }
 
