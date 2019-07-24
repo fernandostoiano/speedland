@@ -4,6 +4,11 @@
 
 	<modelVersion>4.0.0</modelVersion>
 
+	<groupId>com.gympass</groupId>
+	<artifactId>speedland</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>speedland</name>
+
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
@@ -11,26 +16,31 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
-	<groupId>com.gympass</groupId>
-	<artifactId>speedland</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>speedland</name>
-
 	<properties>
 		<java.version>11</java.version>
+		<fixture.factory.version>3.1.0</fixture.factory.version>
 	</properties>
 
 	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>br.com.six2six</groupId>
+			<artifactId>fixture-factory</artifactId>
+			<version>${fixture.factory.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
 	</dependencies>
 
 	<build>
