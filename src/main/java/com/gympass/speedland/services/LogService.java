@@ -21,7 +21,7 @@ public class LogService {
     @Autowired
     private GrandPrixStrategyFactory grandPrixStrategyFactory;
 
-    public void readLog() throws IOException {
+    public GrandPrix readLog() throws IOException {
 
         Path path = Paths.get("/Users/fernandostoianogonzalez/dev/gympass/speedland/speed.txt");
 
@@ -37,22 +37,7 @@ public class LogService {
             grandPrixStrategy.registerLap(grandPrix, lineDto);
         }
 
-        for(Pilot pilot : grandPrix.getPilots()) {
-
-            System.out.println("Code: " + pilot.getCode() + " Name: " + pilot.getName() + " Laps: " + pilot.getLaps().size() + " Position: " + pilot.getPosition());
-
-        }
-    }
-
-    public static void main(String ...args) {
-
-        LogService service = new LogService();
-
-        try {
-            service.readLog();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        return grandPrix;
     }
 
 }
