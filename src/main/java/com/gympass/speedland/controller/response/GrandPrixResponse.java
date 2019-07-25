@@ -8,7 +8,7 @@ public class GrandPrixResponse {
 
     private LocalTime durationTime;
 
-    private String betterLap;
+    private BetterLapResponse betterLap;
 
     private List<PilotResponse> pilots;
 
@@ -22,7 +22,7 @@ public class GrandPrixResponse {
         return this;
     }
 
-    public GrandPrixResponse betterLap(String betterLap) {
+    public GrandPrixResponse betterLap(BetterLapResponse betterLap) {
         this.betterLap = betterLap;
         return this;
     }
@@ -36,7 +36,7 @@ public class GrandPrixResponse {
         return durationTime;
     }
 
-    public String getBetterLap() {
+    public BetterLapResponse getBetterLap() {
         return betterLap;
     }
 

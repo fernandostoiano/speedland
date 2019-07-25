@@ -1,7 +1,7 @@
 package com.gympass.speedland.controller;
 
 import com.gympass.speedland.controller.response.GrandPrixResponse;
-import com.gympass.speedland.controller.response.PilotResponse;
+import com.gympass.speedland.converter.GrandPrixResponseConveter;
 import com.gympass.speedland.models.GrandPrix;
 import com.gympass.speedland.services.LogService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/speedland")
@@ -23,30 +21,15 @@ public class SpeedlandController {
     @Autowired
     private LogService logService;
 
+    @Autowired
+    private GrandPrixResponseConveter grandPrixResponseConveter;
+
     @PostMapping(produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<? extends GrandPrixResponse> startGrandPrix() {
-
         try {
             GrandPrix grandPrix = logService.readLog();
-            List<PilotResponse> pilots = new ArrayList<>();
 
-            grandPrix.getPilots().forEach(p -> {
-
-                PilotResponse pilotResponse = new PilotResponse()
-                        .code(p.getCode())
-                        .position(p.getPosition())
-                        .name(p.getName())
-                        .completedLaps(p.getLaps().size())
-                        .betterLap(p.getBetterLap().getNumber())
-                        .averageSpeed(p.getGrandPrixAverageSpeed());
-
-                pilots.add(pilotResponse);
-            });
-
-            GrandPrixResponse response = new GrandPrixResponse()
-                    .durationTime(grandPrix.getDurationTime())
-                    .betterLap(grandPrix.getBetterLap())
-                    .pilots(pilots);
+            GrandPrixResponse response = grandPrixResponseConveter.apply(grandPrix);
 
             return new ResponseEntity<>(response, HttpStatus.OK);
         } catch (IOException e) {
