@@ -1,12 +1,12 @@
 package com.gympass.speedland.fixture;
 
-import br.com.six2six.fixturefactory.Fixture;
-import br.com.six2six.fixturefactory.Rule;
-import br.com.six2six.fixturefactory.loader.TemplateLoader;
+import static br.com.six2six.fixturefactory.Fixture.of;
+
 import com.gympass.speedland.models.GrandPrix;
 import com.gympass.speedland.models.Pilot;
 
-import static br.com.six2six.fixturefactory.Fixture.of;
+import br.com.six2six.fixturefactory.Rule;
+import br.com.six2six.fixturefactory.loader.TemplateLoader;
 
 public class GrandPrixFixture implements TemplateLoader {
 
