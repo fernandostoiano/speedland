@@ -41,12 +41,14 @@ public class SpeedlandController {
                 pilots.add(pilotResponse);
             });
 
-            GrandPrixResponse response = new GrandPrixResponse();
-            response.pilots(pilots);
+            GrandPrixResponse response = new GrandPrixResponse()
+                    .pilots(pilots)
+                    .durationTime(grandPrix.getDurationTime());
+
             return new ResponseEntity(response, HttpStatus.OK);
         } catch (IOException e) {
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
-
     }
+
 }

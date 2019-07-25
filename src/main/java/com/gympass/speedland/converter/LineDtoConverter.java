@@ -4,13 +4,13 @@ import static org.springframework.util.StringUtils.isEmpty;
 
 import com.gympass.speedland.dto.LineDto;
 import com.gympass.speedland.utils.TimesUtils;
+import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 import java.util.function.Function;
 
-
+@Component
 public class LineDtoConverter implements Function<String, LineDto> {
 
     @Override

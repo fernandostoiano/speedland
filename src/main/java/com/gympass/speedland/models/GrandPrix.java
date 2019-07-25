@@ -1,6 +1,8 @@
 package com.gympass.speedland.models;
 
 
+import com.gympass.speedland.utils.TimesUtils;
+
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -8,25 +10,16 @@ import java.util.List;
 
 public class GrandPrix {
 
-
-    private LocalTime totalTime;
-
     private List<Pilot> pilots;
 
-    private boolean finished;
+    private LocalTime startTime;
+
+    private LocalTime finishTime;
 
     public GrandPrix() {
         this.pilots = new ArrayList<>();
     }
 
-
-    public LocalTime getTotalTime() {
-        return totalTime;
-    }
-
-    public void setTotalTime(LocalTime totalTime) {
-        this.totalTime = totalTime;
-    }
 
     public List<Pilot> getPilots() {
         return pilots;
@@ -42,12 +35,20 @@ public class GrandPrix {
 
     public void addPilot(Pilot pilot) { this.pilots.add(pilot); }
 
-    public boolean isFinished() {
-        return finished;
+    public LocalTime getStartTime() {
+        return startTime;
     }
 
-    public void setFinished(boolean finished) {
-        this.finished = finished;
+    public void setStartTime(LocalTime startTime) {
+        this.startTime = startTime;
+    }
+
+    public LocalTime getFinishTime() {
+        return finishTime;
+    }
+
+    public void setFinishTime(LocalTime finishTime) {
+        this.finishTime = finishTime;
     }
 
     public void calculateQualify() {
@@ -58,6 +59,10 @@ public class GrandPrix {
             pilot.setPosition(position);
             position++;
         }
+    }
+
+    public LocalTime getDurationTime() {
+        return TimesUtils.minus(finishTime, startTime);
     }
 
 }
