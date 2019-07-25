@@ -44,7 +44,7 @@ public class LineDtoConverter implements Function<String, LineDto> {
 
         String hora = line.substring(0, 12);
 
-        LocalTime time = LocalTime.parse(hora, DateTimeFormatter.ISO_TIME);
+        LocalTime time = TimesUtils.convertStringToLocalTime(hora);
 
         return time;
     }

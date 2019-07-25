@@ -10,7 +10,28 @@ import java.time.LocalTime;
 public class TimesUtilsTest {
 
     @Test
-    public void mustConvertMinuteToLocalTime() {
+    public void shouldConvertStringToLocalTime() {
+
+        String timeString = "23:49:08.277";
+
+        LocalTime result = TimesUtils.convertStringToLocalTime(timeString);
+
+        assertThat(result.toString(), equalTo("23:49:08.277"));
+    }
+
+    @Test
+    public void shouldValidateNullOnConvertStringToLocalTime() {
+
+        String timeString = null;
+
+        LocalTime result = TimesUtils.convertStringToLocalTime(timeString);
+
+        assertNull(result);
+    }
+
+
+    @Test
+    public void shouldConvertMinuteToLocalTime() {
         String minuteTime = "1:55.555";
 
         LocalTime localTime = TimesUtils.convertMinuteToLocalTime(minuteTime);
@@ -19,7 +40,7 @@ public class TimesUtilsTest {
     }
 
     @Test
-    public void mustValidateMinuteTimeIsEmpty() {
+    public void shouldValidateMinuteTimeIsEmpty() {
         String minuteTime = "";
 
         LocalTime localTime = TimesUtils.convertMinuteToLocalTime(minuteTime);
@@ -28,11 +49,42 @@ public class TimesUtilsTest {
     }
 
     @Test
-    public void mustValidateMinuteTimeIsNull() {
+    public void shouldValidateMinuteTimeIsNull() {
 
         LocalTime localTime = TimesUtils.convertMinuteToLocalTime(null);
 
         assertNull(localTime);
+    }
+
+    @Test
+    public void shouldObtainMinusTime() {
+        LocalTime l1 = TimesUtils.convertStringToLocalTime("23:49:08.277");
+        LocalTime l2 = TimesUtils.convertMinuteToLocalTime("1:02.852");
+
+        LocalTime result = TimesUtils.minus(l1, l2);
+
+        LocalTime compere = TimesUtils.convertStringToLocalTime("23:48:05.425");
+        assertThat(result, equalTo(compere));
+    }
+
+    @Test
+    public void shouldValidateFirstElementNullOnObtainMinusTime() {
+        LocalTime l1 = null;
+        LocalTime l2 = TimesUtils.convertMinuteToLocalTime("1:02.852");
+
+        LocalTime result = TimesUtils.minus(l1, l2);
+
+        assertNull(result);
+    }
+
+    @Test
+    public void shouldValidateSecondElementNullOnObtainMinusTime() {
+        LocalTime l1 = TimesUtils.convertStringToLocalTime("23:49:08.277");
+        LocalTime l2 = null;
+
+        LocalTime result = TimesUtils.minus(l1, l2);
+
+        assertNull(result);
     }
 
 }
