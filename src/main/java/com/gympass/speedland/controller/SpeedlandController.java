@@ -45,9 +45,9 @@ public class SpeedlandController {
                     .pilots(pilots)
                     .durationTime(grandPrix.getDurationTime());
 
-            return new ResponseEntity(response, HttpStatus.OK);
+            return new ResponseEntity<>(response, HttpStatus.OK);
         } catch (IOException e) {
-            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
