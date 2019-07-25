@@ -19,6 +19,7 @@
 	<properties>
 		<java.version>11</java.version>
 		<fixture.factory.version>3.1.0</fixture.factory.version>
+		<apache.commons.math.version>3.6.1</apache.commons.math.version>
 	</properties>
 
 	<dependencies>
@@ -39,6 +40,12 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-math3</artifactId>
+			<version>${apache.commons.math.version}</version>
 		</dependency>
 
 	</dependencies>

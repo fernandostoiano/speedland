@@ -65,4 +65,20 @@ public class GrandPrix {
         return TimesUtils.minus(finishTime, startTime);
     }
 
+    public String getBetterLap() {
+        Lap betterLap = null;
+        Double better = 0.0;
+        for(Pilot pilot: pilots) {
+            Lap lap = pilot.getBetterLap();
+            if(lap.getAverageSpeed() > better) {
+                better = lap.getAverageSpeed();
+                betterLap = lap;
+            }
+        }
+
+        String betterLapDescription = "The better grand prix lap is a " + betterLap.getNumber() + " lap the pilot name is " + betterLap.getPilot().getName();
+
+        return betterLapDescription;
+    }
+
 }

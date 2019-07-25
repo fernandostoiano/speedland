@@ -9,7 +9,11 @@ public class PilotResponse {
 
     private String name;
 
-    private Integer laps;
+    private Integer completedLaps;
+
+    private Integer betterLap;
+
+    private Double averageSpeed;
 
     public PilotResponse position(Integer position) {
         this.position = position;
@@ -26,8 +30,18 @@ public class PilotResponse {
         return  this;
     }
 
-    public PilotResponse laps(Integer laps) {
-        this.laps = laps;
+    public PilotResponse completedLaps(Integer completedLaps) {
+        this.completedLaps = completedLaps;
+        return this;
+    }
+
+    public PilotResponse betterLap(Integer betterLap) {
+        this.betterLap = betterLap;
+        return this;
+    }
+
+    public PilotResponse averageSpeed(Double averageSpeed) {
+        this.averageSpeed = averageSpeed;
         return this;
     }
 
@@ -35,8 +49,8 @@ public class PilotResponse {
         return position;
     }
 
-    public Integer getLaps() {
-        return laps;
+    public Integer getCompletedLaps() {
+        return completedLaps;
     }
 
     public Integer getCode() {
@@ -45,6 +59,14 @@ public class PilotResponse {
 
     public String getName() {
         return name;
+    }
+
+    public Integer getBetterLap() {
+        return betterLap;
+    }
+
+    public Double getAverageSpeed() {
+        return averageSpeed;
     }
 
 }

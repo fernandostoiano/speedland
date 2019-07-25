@@ -36,14 +36,17 @@ public class SpeedlandController {
                         .code(p.getCode())
                         .position(p.getPosition())
                         .name(p.getName())
-                        .laps(p.getLaps().size());
+                        .completedLaps(p.getLaps().size())
+                        .betterLap(p.getBetterLap().getNumber())
+                        .averageSpeed(p.getGrandPrixAverageSpeed());
 
                 pilots.add(pilotResponse);
             });
 
             GrandPrixResponse response = new GrandPrixResponse()
-                    .pilots(pilots)
-                    .durationTime(grandPrix.getDurationTime());
+                    .durationTime(grandPrix.getDurationTime())
+                    .betterLap(grandPrix.getBetterLap())
+                    .pilots(pilots);
 
             return new ResponseEntity<>(response, HttpStatus.OK);
         } catch (IOException e) {

@@ -1,5 +1,7 @@
 package com.gympass.speedland.models;
 
+import org.apache.commons.math3.util.Precision;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -60,5 +62,27 @@ public class Pilot {
     }
 
     public void addLap(Lap lap) { this.laps.add(lap); }
+
+    public Lap getBetterLap() {
+        Lap betterLap = null;
+        Double better = 0.0;
+        for(Lap lap: laps) {
+
+            if (lap.getAverageSpeed() > better) {
+                better = lap.getAverageSpeed();
+                betterLap = lap;
+            }
+        }
+        return betterLap;
+    }
+
+    public Double getGrandPrixAverageSpeed() {
+        Double average = 0.0;
+        for(Lap lap: laps) {
+            average = average + lap.getAverageSpeed();
+        }
+        average = average / laps.size();
+        return Precision.round(average, 2);
+    }
 
 }
