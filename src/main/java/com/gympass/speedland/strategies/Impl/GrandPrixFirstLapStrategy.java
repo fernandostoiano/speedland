@@ -29,7 +29,7 @@ public class GrandPrixFirstLapStrategy implements GrandPrixStrategy {
 
         grandPrix.addPilot(pilot);
 
-        grandPrix.calculateQualify();
+        grandPrix.getQualify();
     }
 
 }

@@ -32,7 +32,7 @@ public class GrandPrixTest extends BasicTest {
         lap = from(Lap.class).gimme(LapFixture.SECOND_LAP);
         grandPrix.getPilotByCode(11).addLap(lap);
 
-        grandPrix.calculateQualify();
+        grandPrix.getQualify();
 
         assertThat(grandPrix.getPilots().get(0).getCode(), equalTo(2));
         assertThat(grandPrix.getPilots().get(0).getPosition(), equalTo(1));

@@ -51,7 +51,7 @@ public class GrandPrix {
         this.finishTime = finishTime;
     }
 
-    public void calculateQualify() {
+    public void getQualify() {
         pilots.sort(Comparator.comparing(p -> p.getLaps().size(), Comparator.reverseOrder()));
 
         int position = 1;

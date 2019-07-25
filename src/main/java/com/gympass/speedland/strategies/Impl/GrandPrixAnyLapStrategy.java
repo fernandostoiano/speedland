@@ -24,6 +24,6 @@ public class GrandPrixAnyLapStrategy implements GrandPrixStrategy {
 
         pilot.addLap(lap);
 
-        grandPrix.calculateQualify();
+        grandPrix.getQualify();
     }
 }
