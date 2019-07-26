@@ -24,8 +24,10 @@ public class GrandPrixFirstLapStrategy implements GrandPrixStrategy {
         lap.setCompletedTime(lineDto.getLapTime());
         lap.setTime(lineDto.getTime());
         lap.setAverageSpeed(lineDto.getAverageSpeed());
+        lap.setBetterPerformance(true);
 
         pilot.addLap(lap);
+        pilot.averageSpeedAdd(lap.getAverageSpeed());
 
         grandPrix.addPilot(pilot);
 

@@ -15,6 +15,7 @@ public class Lap {
 
     private Pilot pilot;
 
+    private boolean betterPerformance;
 
     public Integer getNumber() {
         return number;
@@ -54,6 +55,14 @@ public class Lap {
 
     public void setPilot(Pilot pilot) {
         this.pilot = pilot;
+    }
+
+    public boolean isBetterPerformance() {
+        return betterPerformance;
+    }
+
+    public void setBetterPerformance(boolean betterPerformance) {
+        this.betterPerformance = betterPerformance;
     }
 
 }

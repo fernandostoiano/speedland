@@ -8,7 +8,6 @@ import com.gympass.speedland.strategies.GrandPrixStrategy;
 import com.gympass.speedland.utils.TimesUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -41,7 +40,6 @@ public class LogService {
             GrandPrixStrategy grandPrixStrategy = grandPrixStrategyFactory.getStrategy(lineDto);
             grandPrixStrategy.registerLap(grandPrix, lineDto);
         }
-
         return grandPrix;
     }
 

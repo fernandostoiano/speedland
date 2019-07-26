@@ -23,6 +23,14 @@ public class GrandPrixAnyLapStrategy implements GrandPrixStrategy {
         lap.setAverageSpeed(lineDto.getAverageSpeed());
 
         pilot.addLap(lap);
+        pilot.averageSpeedAdd(lap.getAverageSpeed());
+
+        Lap betterLap = pilot.getBetterLap();
+
+        if(lap.getAverageSpeed() > betterLap.getAverageSpeed()) {
+            betterLap.setBetterPerformance(false);
+            lap.setBetterPerformance(true);
+        }
 
         grandPrix.getQualify();
     }

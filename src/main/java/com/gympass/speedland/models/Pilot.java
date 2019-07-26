@@ -15,9 +15,11 @@ public class Pilot {
 
     private List<Lap> laps;
 
+    private Double averageSpeed;
 
     public Pilot() {
         this.laps = new ArrayList<>();
+        this.averageSpeed = 0.0;
     }
 
 
@@ -31,7 +33,6 @@ public class Pilot {
         }
         return false;
     }
-
 
     public void setCode(Integer code) {
         this.code = code;
@@ -64,25 +65,16 @@ public class Pilot {
     public void addLap(Lap lap) { this.laps.add(lap); }
 
     public Lap getBetterLap() {
-        Lap betterLap = null;
-        Double better = 0.0;
-        for(Lap lap: laps) {
+        return laps.stream().filter(Lap::isBetterPerformance).findFirst().get();
+    }
 
-            if (lap.getAverageSpeed() > better) {
-                better = lap.getAverageSpeed();
-                betterLap = lap;
-            }
-        }
-        return betterLap;
+    public void averageSpeedAdd(Double averageSpeed) {
+        this.averageSpeed += averageSpeed;
     }
 
     public Double getGrandPrixAverageSpeed() {
-        Double average = 0.0;
-        for(Lap lap: laps) {
-            average = average + lap.getAverageSpeed();
-        }
-        average = average / laps.size();
-        return Precision.round(average, 2);
+        this.averageSpeed = this.averageSpeed / laps.size();
+        return Precision.round(this.averageSpeed, 2);
     }
 
 }

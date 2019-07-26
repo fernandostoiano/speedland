@@ -1,12 +1,11 @@
 package com.gympass.speedland.models;
 
-
 import com.gympass.speedland.utils.TimesUtils;
-
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class GrandPrix {
 
@@ -65,11 +64,16 @@ public class GrandPrix {
         return TimesUtils.minus(finishTime, startTime);
     }
 
+    public List<Lap> getBetterLaps() {
+        return pilots.stream().map(pilot -> {
+            return pilot.getBetterLap();
+        }).collect(Collectors.toList());
+    }
+
     public Lap getBetterLap() {
         Lap betterLap = null;
         Double better = 0.0;
-        for(Pilot pilot: pilots) {
-            Lap lap = pilot.getBetterLap();
+        for(Lap lap: getBetterLaps()) {
             if(lap.getAverageSpeed() > better) {
                 better = lap.getAverageSpeed();
                 betterLap = lap;
