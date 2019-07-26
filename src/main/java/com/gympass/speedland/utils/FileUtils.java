@@ -17,10 +17,10 @@ public class FileUtils {
     private Environment env;
 
     public List<String> getFileLines() {
+        String userDir = System.getProperty("user.dir");
+        String fileName = env.getProperty("default.file.name");
 
-        String filePath = env.getProperty("default.file.race.path");
-
-        Path path = Paths.get(filePath);
+        Path path = Paths.get(userDir + "/" + fileName);
 
         List<String> lines = null;
         try {
