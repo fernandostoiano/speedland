@@ -1,6 +1,6 @@
 # Speedland
 
-**Speedland** se trata de uma corrida de kart. A partir de um input de um arquivo de log do formato txt. Através desse arquivo **speedland** consegue entender tudo que aconteceu durante a prova. Após o processamento desse arquivo você irá obter o resultado da corrida com as seguintes informações: **Posição Chegada**, **Código Piloto**, **Nome Piloto**, **Qtde Voltas Completadas**, **Tempo Total de Prova**, **Melhor volta de cada piloto**, **Melhor volta da corrida** e **A velocidade média de cada piloto durante toda corrida**.
+**Speedland** se trata de uma corrida de kart a partir de um input de um arquivo de log do formato txt. Através desse arquivo **speedland** consegue entender tudo que aconteceu durante a prova. Após o processamento desse arquivo você irá obter o resultado da corrida com as seguintes informações: **Posição Chegada**, **Código Piloto**, **Nome Piloto**, **Qtde Voltas Completadas**, **Tempo Total de Prova**, **Melhor volta de cada piloto**, **Melhor volta da corrida** e **A velocidade média de cada piloto durante toda corrida**.
 
 # Pré-requisitos
 - Java SDK 11
