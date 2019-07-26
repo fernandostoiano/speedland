@@ -1,5 +1,8 @@
 package com.gympass.speedland.controller.response;
 
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -42,6 +45,11 @@ public class GrandPrixResponse {
 
     public List<PilotResponse> getPilots() {
         return pilots;
+    }
+
+    @Override
+    public String toString() {
+        return new ReflectionToStringBuilder(this, ToStringStyle.JSON_STYLE).toString();
     }
 
 }

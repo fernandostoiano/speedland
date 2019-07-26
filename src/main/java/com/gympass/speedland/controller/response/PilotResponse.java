@@ -1,6 +1,9 @@
 package com.gympass.speedland.controller.response;
 
 
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 public class PilotResponse {
 
     private Integer position;
@@ -67,6 +70,11 @@ public class PilotResponse {
 
     public Double getAverageSpeed() {
         return averageSpeed;
+    }
+
+    @Override
+    public String toString() {
+        return new ReflectionToStringBuilder(this, ToStringStyle.JSON_STYLE).toString();
     }
 
 }

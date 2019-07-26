@@ -1,5 +1,8 @@
 package com.gympass.speedland.controller.response;
 
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 public class BetterLapResponse {
 
     private Integer pilotCode;
@@ -33,6 +36,11 @@ public class BetterLapResponse {
 
     public Integer getLapNumber() {
         return lapNumber;
+    }
+
+    @Override
+    public String toString() {
+        return new ReflectionToStringBuilder(this, ToStringStyle.JSON_STYLE).toString();
     }
 
 }
