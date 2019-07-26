@@ -1,5 +1,6 @@
 package com.gympass.speedland.services;
 
+import com.gympass.speedland.controller.GrandPrixController;
 import com.gympass.speedland.converter.LineDtoConverter;
 import com.gympass.speedland.dto.LineDto;
 import com.gympass.speedland.factories.GrandPrixStrategyFactory;
@@ -7,6 +8,8 @@ import com.gympass.speedland.models.GrandPrix;
 import com.gympass.speedland.strategies.GrandPrixStrategy;
 import com.gympass.speedland.utils.FileUtils;
 import com.gympass.speedland.utils.TimesUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.time.LocalTime;
@@ -14,6 +17,8 @@ import java.util.List;
 
 @Service
 public class GrandPrixServiceImpl implements GrandPrixService {
+
+    private static final Logger LOG = LoggerFactory.getLogger(GrandPrixServiceImpl.class);
 
     private LineDtoConverter lineDtoConverter;
 
@@ -33,6 +38,8 @@ public class GrandPrixServiceImpl implements GrandPrixService {
 
     public GrandPrix startRace(String path) {
 
+        LOG.info("Start race");
+
         List<String> lines = fileUtils.getFileLines(path);
 
         GrandPrix grandPrix = new GrandPrix();
@@ -45,6 +52,9 @@ public class GrandPrixServiceImpl implements GrandPrixService {
             GrandPrixStrategy grandPrixStrategy = grandPrixStrategyFactory.getStrategy(lineDto);
             grandPrixStrategy.registerLap(grandPrix, lineDto);
         }
+
+        LOG.info("Finished race");
+
         return grandPrix;
     }
 

@@ -4,6 +4,8 @@ import com.gympass.speedland.controller.response.GrandPrixResponse;
 import com.gympass.speedland.converter.GrandPrixResponseConveter;
 import com.gympass.speedland.models.GrandPrix;
 import com.gympass.speedland.services.GrandPrixService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -17,6 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/speedland")
 public class GrandPrixController {
 
+    private static final Logger LOG = LoggerFactory.getLogger(GrandPrixController.class);
+
     @Autowired
     private GrandPrixService grandPrixService;
 
@@ -25,13 +29,22 @@ public class GrandPrixController {
 
     @PostMapping(path = "/start_race", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<? extends GrandPrixResponse> startRace(
-            @RequestParam(value = "filePath", required = false) String path) {
+            @RequestParam(value = "filePath", required = false) String filePath) {
 
-        GrandPrix grandPrix = grandPrixService.startRace(path);
+        LOG.info("Start Race - request: {}", filePath);
 
-        GrandPrixResponse response = grandPrixResponseConveter.apply(grandPrix);
+        try {
+            GrandPrix grandPrix = grandPrixService.startRace(filePath);
 
-        return new ResponseEntity<>(response, HttpStatus.OK);
+            GrandPrixResponse response = grandPrixResponseConveter.apply(grandPrix);
+
+            LOG.info("Finished Race - response: {}", response);
+
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }catch(RuntimeException e) {
+            LOG.error("Error ocurred on start race", e);
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
 }
