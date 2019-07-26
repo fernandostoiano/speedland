@@ -39,6 +39,7 @@ public class PilotFixture implements TemplateLoader {
             add("code", 2);
             add("name", "K.RAIKKONEN");
             add("laps", has(2).of(Lap.class, LapFixture.FIRST_BETTER_LAP, LapFixture.SECOND_LAP));
+            add("averageSpeed", 54.5578222);
         }});
 
         of(Pilot.class).addTemplate(M_WEBBER,
