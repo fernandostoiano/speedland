@@ -29,4 +29,7 @@ Quando executar esta URL você vai obter um json de resposta representando os re
 arquivo de LOG padrão já na raiz do projeto. O nome deste arquivo é o speedland.txt.
 
 Caso queria executar a corrida a partir de um outra arquivo qualquer, basta te-lo em qualquer diretório da sua maquina e executar a URL anterior da seguinte forma
-> exemplo : localhost:8080/api/speedland/start_race?filePath=/Users/fernandostoianogonzalez/dev/gympass/speed.txt
+
+Exemplo:
+
+> localhost:8080/api/speedland/start_race?filePath=/Users/fernandostoianogonzalez/dev/gympass/speed.txt
