@@ -1,6 +1,13 @@
 package com.gympass.speedland.services;
 
-import com.gympass.speedland.controller.GrandPrixController;
+import java.time.LocalTime;
+import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.gympass.speedland.converter.LineDtoConverter;
 import com.gympass.speedland.dto.LineDto;
 import com.gympass.speedland.factories.GrandPrixStrategyFactory;
@@ -8,12 +15,6 @@ import com.gympass.speedland.models.GrandPrix;
 import com.gympass.speedland.strategies.GrandPrixStrategy;
 import com.gympass.speedland.utils.FileUtils;
 import com.gympass.speedland.utils.TimesUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import java.time.LocalTime;
-import java.util.List;
 
 @Service
 public class GrandPrixServiceImpl implements GrandPrixService {
