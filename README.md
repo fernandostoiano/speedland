@@ -1,6 +1,6 @@
 # Speedland
 
-**Speedland** se trata de uma corrida de kart, onde a aplicação se baseia em uma entrada de um arquivo de log txt. Através desse arquivo, **speedland** consegue entender tudo que aconteceu durante a prova. Trazendo como resultado as posições de cada piloto, quantas voltas completadas, qual a melhor volta de cada piloto e da prova, coisas desse tipo.
+**Speedland** se trata de uma corrida de kart. A partir de um input de um arquivo de log do formato txt. Através desse arquivo **speedland** consegue entender tudo que aconteceu durante a prova. Após o processamento desse arquivo você irá obter o resultado da corrida com as seguintes informações: **Posição Chegada**, **Código Piloto**, **Nome Piloto**, **Qtde Voltas Completadas**, **Tempo Total de Prova**, **Melhor volta de cada piloto**, **Melhor volta da corrida** e **A velocidade média de cada piloto durante toda corrida**.
 
 # Pré-requisitos
 - Java SDK 11
@@ -19,7 +19,7 @@ Baixe o repositório de **speedland** aqui no github na sua máquina e em seguid
 
 # Como Iniciar a Corrida?
 
-Se você seguiu os passos anteriores corretamente nesse momento a aplicação já deve estar rodando.
+Se você seguiu os passos anteriores corretamente, nesse momento a aplicação já deve estar rodando.
 
 O que vamos fazer agora? Siga os seguintes passos:
 
@@ -28,7 +28,7 @@ O que vamos fazer agora? Siga os seguintes passos:
 Quando executar esta URL você vai obter um json de resposta representando os resultados da corrida. Isso porque existe um
 arquivo de LOG padrão já na raiz do projeto. O nome deste arquivo é o speedland.txt.
 
-Caso queria executar a corrida a partir de um outra arquivo qualquer, basta te-lo em qualquer diretório da sua maquina e executar a URL anterior da seguinte forma
+Caso queria executar a corrida a partir de um outra arquivo qualquer, basta te-lo em qualquer diretório da sua maquina e executar a URL anterior da seguinte forma:
 
 Exemplo:
 
