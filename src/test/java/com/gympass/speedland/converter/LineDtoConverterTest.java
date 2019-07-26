@@ -22,7 +22,7 @@ public class LineDtoConverterTest {
     }
 
     @Test
-    public void mustConvertLineToDto() {
+    public void shouldTestConvertLineToDto() {
 
         String line = "23:49:08.277      038 – F.MASSA                           1     1:02.852                        44,275";
 
@@ -37,7 +37,7 @@ public class LineDtoConverterTest {
     }
 
     @Test
-    public void mustValidateLineIsEmpty() {
+    public void shouldTestLineIsEmpty() {
 
         String line = "";
 
@@ -47,7 +47,7 @@ public class LineDtoConverterTest {
     }
 
     @Test
-    public void mustValidateLineIsNull() {
+    public void shouldTestLineIsNull() {
 
         LineDto lineDto = spy.apply(null);
 
@@ -55,7 +55,7 @@ public class LineDtoConverterTest {
     }
 
     @Test
-    public void mustValidateLineLength() {
+    public void shouldTestLineLength() {
 
         String line = "23:49:08.277      038 – F.MASSA                      ";
 

@@ -10,7 +10,7 @@ import java.time.LocalTime;
 public class TimesUtilsTest {
 
     @Test
-    public void shouldConvertStringToLocalTime() {
+    public void shouldTestConvertStringToLocalTime() {
 
         String timeString = "23:49:08.277";
 
@@ -20,7 +20,7 @@ public class TimesUtilsTest {
     }
 
     @Test
-    public void shouldValidateNullOnConvertStringToLocalTime() {
+    public void shouldTestNullOnConvertStringToLocalTime() {
 
         String timeString = null;
 
@@ -31,7 +31,7 @@ public class TimesUtilsTest {
 
 
     @Test
-    public void shouldConvertMinuteToLocalTime() {
+    public void shouldTestConvertMinuteToLocalTime() {
         String minuteTime = "1:55.555";
 
         LocalTime localTime = TimesUtils.convertMinuteToLocalTime(minuteTime);
@@ -40,7 +40,7 @@ public class TimesUtilsTest {
     }
 
     @Test
-    public void shouldValidateMinuteTimeIsEmpty() {
+    public void shouldTestMinuteTimeIsEmpty() {
         String minuteTime = "";
 
         LocalTime localTime = TimesUtils.convertMinuteToLocalTime(minuteTime);
@@ -49,7 +49,7 @@ public class TimesUtilsTest {
     }
 
     @Test
-    public void shouldValidateMinuteTimeIsNull() {
+    public void shouldTestMinuteTimeIsNull() {
 
         LocalTime localTime = TimesUtils.convertMinuteToLocalTime(null);
 
@@ -57,7 +57,7 @@ public class TimesUtilsTest {
     }
 
     @Test
-    public void shouldObtainMinusTime() {
+    public void shouldTestObtainMinusTime() {
         LocalTime l1 = TimesUtils.convertStringToLocalTime("23:49:08.277");
         LocalTime l2 = TimesUtils.convertMinuteToLocalTime("1:02.852");
 
@@ -68,7 +68,7 @@ public class TimesUtilsTest {
     }
 
     @Test
-    public void shouldValidateFirstElementNullOnObtainMinusTime() {
+    public void shouldTestFirstElementNullOnObtainMinusTime() {
         LocalTime l1 = null;
         LocalTime l2 = TimesUtils.convertMinuteToLocalTime("1:02.852");
 
@@ -78,7 +78,7 @@ public class TimesUtilsTest {
     }
 
     @Test
-    public void shouldValidateSecondElementNullOnObtainMinusTime() {
+    public void shouldTestSecondElementNullOnObtainMinusTime() {
         LocalTime l1 = TimesUtils.convertStringToLocalTime("23:49:08.277");
         LocalTime l2 = null;
 
