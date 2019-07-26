@@ -5,30 +5,36 @@ import com.gympass.speedland.dto.LineDto;
 import com.gympass.speedland.factories.GrandPrixStrategyFactory;
 import com.gympass.speedland.models.GrandPrix;
 import com.gympass.speedland.strategies.GrandPrixStrategy;
+import com.gympass.speedland.utils.FileUtils;
 import com.gympass.speedland.utils.TimesUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.time.LocalTime;
 import java.util.List;
 
 @Service
-public class LogService {
+public class GrandPrixServiceImpl implements GrandPrixService {
 
-    @Autowired
     private LineDtoConverter lineDtoConverter;
 
-    @Autowired
     private GrandPrixStrategyFactory grandPrixStrategyFactory;
 
-    public GrandPrix readLog() throws IOException {
+    private FileUtils fileUtils;
 
-        Path path = Paths.get("/Users/fernandostoianogonzalez/dev/gympass/speedland/speed.txt");
+    @Autowired
+    public GrandPrixServiceImpl(LineDtoConverter lineDtoConverter,
+                                GrandPrixStrategyFactory grandPrixStrategyFactory,
+                                FileUtils fileUtils) {
 
-        List<String> lines = Files.readAllLines(path);
+        this.lineDtoConverter = lineDtoConverter;
+        this.grandPrixStrategyFactory = grandPrixStrategyFactory;
+        this.fileUtils = fileUtils;
+    }
+
+    public GrandPrix startRace() {
+
+        List<String> lines = fileUtils.getFileLines();
+        lines.remove(0);
 
         GrandPrix grandPrix = new GrandPrix();
 
@@ -43,7 +49,7 @@ public class LogService {
         return grandPrix;
     }
 
-    public void getStartAndFinishTime(List<String> lines, GrandPrix grandPrix) {
+    private void getStartAndFinishTime(List<String> lines, GrandPrix grandPrix) {
 
         String firstLine = lines.stream().findFirst().get();
         LineDto firstLineDto = lineDtoConverter.apply(firstLine);
