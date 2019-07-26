@@ -3,6 +3,7 @@ package com.gympass.speedland.utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -16,11 +17,8 @@ public class FileUtils {
     @Autowired
     private Environment env;
 
-    public List<String> getFileLines() {
-        String userDir = System.getProperty("user.dir");
-        String fileName = env.getProperty("default.file.name");
-
-        Path path = Paths.get(userDir + "/" + fileName);
+    public List<String> getFileLines(String filePath) {
+        Path path = Paths.get(getFilePath(filePath));
 
         List<String> lines = null;
         try {
@@ -29,7 +27,17 @@ public class FileUtils {
             e.printStackTrace();
         }
 
+        lines.remove(0);
         return lines;
+    }
+
+    private String getFilePath(String filePath) {
+        if(StringUtils.isEmpty(filePath)) {
+            String userDir = System.getProperty("user.dir");
+            String fileName = env.getProperty("default.file.name");
+            return userDir + "/" + fileName;
+        }
+        return filePath;
     }
 
 }

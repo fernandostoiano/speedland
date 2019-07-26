@@ -31,10 +31,9 @@ public class GrandPrixServiceImpl implements GrandPrixService {
         this.fileUtils = fileUtils;
     }
 
-    public GrandPrix startRace() {
+    public GrandPrix startRace(String path) {
 
-        List<String> lines = fileUtils.getFileLines();
-        lines.remove(0);
+        List<String> lines = fileUtils.getFileLines(path);
 
         GrandPrix grandPrix = new GrandPrix();
 

@@ -18,6 +18,7 @@ import java.util.List;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertThat;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 import static org.mockito.MockitoAnnotations.initMocks;
 
@@ -49,22 +50,24 @@ public class GrandPrixServiceTest extends BasicTest {
     @Test
     public void shouldTestStartRace() {
 
+        String filePath = "/mypath/file.txt";
+
         List<String> lines = new ArrayList<>();
         lines.add("Hora                               Piloto             Nº Volta   Tempo Volta       Velocidade média da volta");
         lines.add("23:49:08.277      038 – F.MASSA                           1     1:02.852                        44,275");
         lines.add("23:49:10.858      033 – R.BARRICHELLO                     1     1:04.352                        43,243");
         lines.add("23:49:11.075      002 – K.RAIKKONEN                       1     1:04.108                        43,408");
 
-        when(fileUtils.getFileLines()).thenReturn(lines);
+        when(fileUtils.getFileLines(filePath)).thenReturn(lines);
         when(lineDtoConverter.apply(any(String.class))).thenReturn(lineDto);
         when(grandPrixStrategyFactory.getStrategy(lineDto)).thenReturn(strategy);
 
-        GrandPrix grandPrix = grandPrixService.startRace();
+        GrandPrix grandPrix = grandPrixService.startRace(filePath);
 
         assertThat(grandPrix, notNullValue());
-        verify(fileUtils, times(1)).getFileLines();
-        verify(lineDtoConverter, times(5)).apply(any());
-        verify(grandPrixStrategyFactory, times(3)).getStrategy(any());
+        verify(fileUtils, times(1)).getFileLines(filePath);
+        verify(lineDtoConverter, times(6)).apply(any());
+        verify(grandPrixStrategyFactory, times(4)).getStrategy(any());
     }
 
 }
